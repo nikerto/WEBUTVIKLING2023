@@ -10,11 +10,37 @@
    Bruker Arial, Helvetica eller sans-serif som skrifttype. */
 body {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#grid-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: "topp" 
+                        "hovedomraade" 
+                        "sidebar" 
+                        "baann";
+}
+
+header{
+    grid-area: topp;
+}
+
+main{
+    grid-area: hovedomraade;
+}
+
+aside{
+    grid-area: sidebar;
+}
+
+footer{
+    grid-area: baann;
+    
+}
 /* Dette gjelder for elementet med id 'logo'.
    Fjerner understreking, setter fontstørrelsen til 18 piksler og tykkelsen til 600.
    Endrer tekstfargen til svart (#000). */
@@ -71,4 +97,38 @@ header nav ul {
    Setter bredden til bildet til 100% av forelder-elementet. */
 .default-flex article img {
     width: 100%;
+}
+
+@media only screen and (min-width:850px) {
+    #grid-container{
+        grid-template-columns: 1fr 1fr 1fr ; 
+    }
+    
+    header{
+        grid-column-start: 1; 
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+    
+    main{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    aside{
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    
+    footer{
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
 }
